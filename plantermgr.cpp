@@ -2,6 +2,7 @@
 #include "box.h"
 #include "boxlist.h"
 #include <iostream>
+#include <cstring>
 
 void PlanterMgr::plant(int boxID, char* plantName) {
 	/* Now that you have insert working, update PersonMgr::plant() to print the
