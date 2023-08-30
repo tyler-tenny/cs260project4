@@ -32,7 +32,7 @@ void PlanterMgr::harvest(char* plantName, int start, int stop) {
 }
 
 void PlanterMgr::prune(int boxID) {
-    std::cout << "Pruning box number " << boxID << "\n";
+    std::cout << "Pruning box number " << boxID << ". \n";
     Box b;
     b.ID = boxID;
     bt.remove(b);
