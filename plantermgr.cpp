@@ -19,7 +19,7 @@ void PlanterMgr::plant(int boxID, char* plantName) {
 
 void PlanterMgr::harvest(char* plantName, int start, int stop) {
     BoxList bl;
-    std::cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << stop << ".\n";
+    std::cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << stop << ". \n";
     bl = bt.getRange(start, stop);
     std::cout << "The following boxes will be harvested: ";
     bl.startIterating();
@@ -33,7 +33,7 @@ void PlanterMgr::harvest(char* plantName, int start, int stop) {
 }
 
 void PlanterMgr::prune(int boxID) {
-    std::cout << "Pruning box number " << boxID << ". \n";
+    std::cout << "Pruning box number " << boxID << ".\n";
     Box b;
     b.ID = boxID;
     bt.remove(b);
