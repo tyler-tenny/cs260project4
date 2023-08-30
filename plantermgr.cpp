@@ -24,7 +24,9 @@ void PlanterMgr::harvest(char* plantName, int start, int stop) {
     bl.startIterating();
     while (bl.hasNextBox()) {
         const Box& box = bl.getNextBox();
-        std::cout << box.ID << " ";
+        if (strcmp(box.plant, plantName) == 0) {
+            std::cout << box.ID << " ";
+        }
     }
     std::cout << "\n";
 }

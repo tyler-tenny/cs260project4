@@ -8,8 +8,9 @@ BoxList::BoxList() {
 }
 
 BoxList::BoxList(const BoxList& other) {
-	head = other.head;
-	tail = other.head;
+	head = nullptr;
+	tail = nullptr;
+	size = 0;
 	Node* cur = other.head;
 
 	while (cur) {

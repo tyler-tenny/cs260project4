@@ -105,20 +105,25 @@ BoxList BoxTree::getRange(const int start, const int stop) {
 
 void BoxTree::createRangeList(BoxList& bl, const int& start, const int& stop, Node*& r) {
 	//traverse to start of range
-	//if ID is less than start, go left. If ID is greater than start, go right.
-	//if ID is equal, go to next step.
+	//if ID is greater than start, go left. If ID is lower than start or equal, start appending
 	if (r) {
-		if (r->data.ID < start) {
+		if (r->data.ID >= start && r->data.ID <= stop) {
+			// Traverse the right subtree first
+			createRangeList(bl, start, stop, r->right);
+
+			// Add the current node's data if it's within the range
+			bl.append(r->data);
+
+			// Traverse the left subtree
 			createRangeList(bl, start, stop, r->left);
 		}
 		else if (r->data.ID > start) {
-			createRangeList(bl, start, stop, r->right);
+			// Traverse the left subtree
+			createRangeList(bl, start, stop, r->left);
 		}
-		else if (r->data.ID == start) {
-			while (r && r->data.ID != stop) {
-				bl.append(r->data);
-				r = r->right;
-			}
+		else {
+			// Traverse the right subtree
+			createRangeList(bl, start, stop, r->right);
 		}
 	}
 }
