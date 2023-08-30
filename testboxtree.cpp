@@ -10,37 +10,29 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
     bool passed = true;
 
     BoxTree bt;
-    bt.inorder();
 
     for (int i=0;i<numValues;i++)
     {
 	bt.insert(Box(values[i],"b"));
     }
 
-    bt.inorder();
 
     for (int i=0;i<numRemoveValues;i++)
     {
-	bt.remove(removeValues[i]);
+        bt.remove(Box(removeValues[i], "b"));
     }
 
-    bt.inorder();
     if (numValues > 3)
     {
 	int a = values[0];
 	int b = values[1];
-	if (a > b) 
-	{
-	    int tmp = a;
-	    a = b;
-	    b = tmp;
-	}
+	    if (a > b) 
+	    {
+	        int tmp = a;
+	        a = b;
+	        b = tmp;
+	    }
     }
-
-    cout << "Leaves:" << endl;
-    bt.printLeaves();
-    cout << endl;
-
 }
 
 int main()
