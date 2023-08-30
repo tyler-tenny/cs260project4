@@ -7,22 +7,7 @@ BoxTree::BoxTree() {
 }
 
 void BoxTree::insert(Box& newBox) {
-	Node* r = root;
-	if (!r) {
-		r = new Node(newBox);
-	}
-
-	else if (r->data.ID == newBox.ID) {
-		r->data = newBox;
-	}
-
-	else if (r->data.ID > newBox.ID) {
-		insert(r->left, newBox);
-	}
-
-	else {
-		insert(r->right, newBox);
-	}
+	insert(root, newBox);
 }
 
 void BoxTree::insert(Node *& r, Box & newBox) {
