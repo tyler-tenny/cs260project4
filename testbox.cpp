@@ -9,8 +9,8 @@ void runTest()
     bool passed = true;
 
     Box b1(1,"one");
-    passed &= checkInt(b1.getNum(),1);
-    passed &= checkStr(b1.getPlantName(),"one");
+    passed &= checkInt(b1.ID,1);
+    passed &= checkStr(b1.plant,"one");
 
     if (passed)
     {
