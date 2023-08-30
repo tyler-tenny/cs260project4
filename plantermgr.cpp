@@ -1,5 +1,6 @@
 #include "plantermgr.h"
 #include "box.h"
+#include "boxlist.h"
 #include <iostream>
 
 void PlanterMgr::plant(int boxID, char* plantName) {
@@ -16,7 +17,16 @@ void PlanterMgr::plant(int boxID, char* plantName) {
 }
 
 void PlanterMgr::harvest(char* plantName, int start, int stop) {
-
+    BoxList bl;
+    std::cout << "Harvesting " << plantName << " plants from boxes " << start << " to " << stop << ".\n";
+    bl = bt.getRange(start, stop);
+    std::cout << "The following boxes will be harvested: ";
+    bl.startIterating();
+    while (bl.hasNextBox()) {
+        const Box& box = bl.getNextBox();
+        std::cout << box.ID << " ";
+    }
+    std::cout << "\n";
 }
 
 void PlanterMgr::prune(int boxID) {

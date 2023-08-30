@@ -1,4 +1,5 @@
 #include "boxtree.h"
+#include "boxlist.h"
 
 Node::Node(Box b) : data{ b }, left{ nullptr }, right{ nullptr } {}
 
@@ -96,8 +97,30 @@ void BoxTree::remove(Node*& r, Box & removeBox) {
 	}
 }
 
-void BoxTree::getRange(int start, int stop) {
+BoxList BoxTree::getRange(const int start, const int stop) {
+	BoxList bl;
+	createRangeList(bl, start, stop, root);
+	return bl;
+}
 
+void BoxTree::createRangeList(BoxList& bl, const int& start, const int& stop, Node*& r) {
+	//traverse to start of range
+	//if ID is less than start, go left. If ID is greater than start, go right.
+	//if ID is equal, go to next step.
+	if (r) {
+		if (r->data.ID < start) {
+			createRangeList(bl, start, stop, r->left);
+		}
+		else if (r->data.ID > start) {
+			createRangeList(bl, start, stop, r->right);
+		}
+		else if (r->data.ID == start) {
+			while (r && r->data.ID != stop) {
+				bl.append(r->data);
+				r = r->right;
+			}
+		}
+	}
 }
 
 void BoxTree::removeAll(Node*& r) {
