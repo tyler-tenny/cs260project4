@@ -13,13 +13,15 @@ void runTest(const int numValues,const int* values,const int numRemoveValues,con
 
     for (int i=0;i<numValues;i++)
     {
-	bt.insert(Box(values[i],"b"));
+        Box b{ values[i],"b" };
+	bt.insert(b);
     }
 
 
     for (int i=0;i<numRemoveValues;i++)
     {
-        bt.remove(Box(removeValues[i], "b"));
+        Box b{ removeValues[i],"b" };
+        bt.remove(b);
     }
 
     if (numValues > 3)
