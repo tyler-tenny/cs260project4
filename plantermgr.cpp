@@ -11,6 +11,8 @@ void PlanterMgr::plant(int boxID, char* plantName) {
 
     Box* b = new Box{ boxID, plantName };
     bt.insert(*b);
+    delete b;
+    b = nullptr;
 }
 
 void PlanterMgr::harvest(char* plantName, int start, int stop) {
