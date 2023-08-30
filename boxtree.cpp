@@ -128,5 +128,6 @@ BoxTree::~BoxTree() {
 	if (root) {
 		removeAll(root);
 	}
+	delete root;
 	root = nullptr;
 }
